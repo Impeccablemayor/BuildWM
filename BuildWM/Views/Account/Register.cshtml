@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<div class="min-h-screen flex items-center justify-center">
+    <div class="dark:bg-gray-800 p-8 rounded-xl shadow-md w-full max-w-md">
+        <h2 class="text-2xl font-bold text-center mb-6 text-indigo-600 dark:text-indigo-400">Create an Account 🛍️</h2>
+        <form action="" method="post">
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email address <span class="text-red-500">*</span></label>
+                <input type="email" id="email" name="email" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            </div>
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">First name <span class="text-red-500">*</span></label>
+                <input type="text" id="email" name="email" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            </div>
+            <div class="mb-4">
+                <label for="password"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password <span class="text-red-500">*</span></label>
+                <input type="password" id="password" name="password" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            </div>
+            <button type="submit" class="py-2 px-3 border border-indigo-500 button"> Sign Up</button>
+        </form>
+
+        
+        <a href="/account/external-login?provider=Google"
+            class="block w-full bg-red-500 text-white text-center py-2 rounded mb-4 hover:bg-red-600 transition">
+            <i class="fa-brands fa-google"></i> Sign up with Google
+        </a>
+
+        <a href="/account/external-login?provider=Facebook"
+            class="block w-full bg-blue-600 text-white text-center py-2 rounded hover:bg-blue-700 transition">
+            <i class="fa-brands fa-facebook"></i> Sign up with Facebook
+        </a>
+
+        <p class="mt-6 text-center text-sm text-gray-500 dark:text-gray-300">
+            Already have an account?
+            <a href="/Account/Login" class="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">Log in</a>
+        </p>
+    </div>
+</div>

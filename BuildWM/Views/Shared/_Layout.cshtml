@@ -15,30 +15,36 @@
 </head>
 
 <body class="bg-gray-100 text-gray-800 font-inter dark:bg-gray-900 dark:text-white">
-    <header class="bg-white dark:bg-gray-900 shadow">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">buildWM</a>
+   <header class="bg-white dark:bg-gray-900 shadow">
+  <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
+    
+    <!-- Logo -->
+    <a href="/" class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">buildWM</a>
+    
+    <!-- Search Bar -->
+    <div class="flex-1 mx-6">
+      <div class="relative w-full">
+        <input type="search" placeholder="Search for anything..."
+          class="w-full pl-5 pr-14 py-2 text-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white rounded-full" />
+        <button
+          class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-indigo-600 text-white py-2 px-3 rounded-full hover:bg-indigo-700 transition">
+          <i class="fas fa-search "></i>
+        </button>
+      </div>
+    </div>
 
-            <nav class="hidden md:flex space-x-6 items-center">
-                <a href="/" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Home</a>
-                <a href="/shop" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Shop</a>
-                <a href="/orders" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Orders</a>
-            </nav>
+    <!-- Auth Links -->
+    <div class="flex items-center space-x-4">
+      <a href="/account/login"
+        class="text-sm bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
+        Login
+      </a>
+      <a href="/account/register" class="text-sm text-indigo-600 hover:underline dark:text-indigo-400">Sign Up</a>
+      <button id="theme-toggle" class="text-2xl ml-2">🌓</button>
+    </div>
+  </div>
+</header>
 
-            <div class="flex items-center space-x-4">
-                <!-- Auth Links -->
-                <a href="/account/login"
-                    class="text-sm bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
-                    Login
-                </a>
-                <a href="/account/register" class="text-sm text-indigo-600 hover:underline dark:text-indigo-400">Sign
-                    Up</a>
-
-                <!-- Dark mode toggle -->
-                <button id="theme-toggle" class="text-2xl ml-2">🌓</button>
-            </div>
-        </div>
-    </header>
 
     <div class="container">
         <main role="main" class="pb-3">

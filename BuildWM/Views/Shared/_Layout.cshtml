@@ -2,66 +2,72 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BuildWM</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/BuildWM.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - BuildWM</title>
+  <script type="importmap"></script>
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/BuildWM.styles.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/css/site.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="animation.css">
 </head>
 
-<body class="bg-gray-100 text-gray-800 font-inter dark:bg-gray-900 dark:text-white">
-   <header class="bg-white dark:bg-gray-900 shadow">
-  <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
-    
-    <!-- Logo -->
-    <a href="/" class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">buildWM</a>
-    
-    <!-- Search Bar -->
-    <div class="flex-1 mx-6">
-      <div class="relative w-full">
-        <input type="search" placeholder="Search for anything..."
-          class="w-full pl-5 pr-14 py-2 text-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white rounded-full" />
-        <button
-          class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-indigo-600 text-white py-2 px-3 rounded-full hover:bg-indigo-700 transition">
-          <i class="fas fa-search "></i>
-        </button>
+<body class="bg-gray-100 font-inter dark:bg-gray-900 dark:text-white text-black">
+  <header class="absolute top-0 left-0 w-full z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
+      <a href="/" class="text-3xl font-bold tracking-tight hover:text-indigo-300 transition">
+        buildWM
+      </a>
+
+      <div class="hidden md:flex flex-1 mx-6">
+        <div class="relative w-full max-w-lg">
+          <form method="get" action="@Url.Action("Index", "Products")" class="relative w-full max-w-lg">
+            <input type="search" name="q" value="@Context.Request.Query["q"]" placeholder="Search for anything..."
+              class="w-full pl-5 pr-14 py-2 text-base border border-transparent bg-white/10 backdrop-blur-lg placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-full transition" />
+
+            <button type="submit"
+              class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-indigo-600 text-white py-2 px-3 rounded-full hover:bg-indigo-700 transition">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <a href="/account/login" class="text-sm font-medium hover:text-indigo-300 transition">
+          Login
+        </a>
+        <a href="/account/register"
+          class="text-sm font-medium px-4 py-2 bg-indigo-600 rounded-full text-white hover:bg-indigo-700 transition">
+          Sign Up
+        </a>
+        <button id="theme-toggle" class="text-2xl text-white hover:text-indigo-300 transition">🌓</button>
       </div>
     </div>
+  </header>
 
-    <!-- Auth Links -->
-    <div class="flex items-center space-x-4">
-      <a href="/account/login"
-        class="text-sm bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
-        Login
-      </a>
-      <a href="/account/register" class="text-sm text-indigo-600 hover:underline dark:text-indigo-400">Sign Up</a>
-      <button id="theme-toggle" class="text-2xl ml-2">🌓</button>
-    </div>
+
+
+  <div class="container">
+    <main role="main" class="pb-3">
+      @RenderBody()
+    </main>
   </div>
-</header>
 
-
+  <footer class="border-top footer text-muted">
     <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+      &copy; 2025 - BuildWM - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - BuildWM - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/theme.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+  </footer>
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="~/js/site.js" asp-append-version="true"></script>
+  <script src="~/js/theme.js" asp-append-version="true"></script>
+  @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>

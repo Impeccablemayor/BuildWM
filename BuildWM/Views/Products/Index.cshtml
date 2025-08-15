@@ -1,0 +1,98 @@
+@model ProductListViewModel
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="pt-24 px-4 md:px-8 max-w-7xl mx-auto">
+
+    <!-- Search form -->
+    @* <form method="get" asp-controller="Products" asp-action="Index" class="mb-6 flex gap-2">
+        <input
+            type="search"
+            name="q"
+            value="@(Model.Query ?? "")"
+            placeholder="Search for products (e.g., laptop, shoes, perfume)..."
+            class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+        <button class="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700">
+            Search
+        </button>
+    </form> *@
+
+    <div class="mb-4 text-sm text-gray-600 dark:text-gray-300">
+        @if (!string.IsNullOrWhiteSpace(Model.Query))
+        {
+            <span>Showing results for "<strong>@Model.Query</strong>" — @Model.Total found.</span>
+        }
+        else
+        {
+            <span>Total products: @Model.Total</span>
+        }
+    </div>
+
+    @if (Model.Products.Count == 0)
+    {
+        <div class="p-8 text-center border rounded-lg">
+            No products found.
+        </div>
+    }
+    else
+    {
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            @foreach (var p in Model.Products)
+            {
+                <div class="border rounded-lg p-4 shadow hover:shadow-lg transition">
+                    <img src="@p.Thumbnail" alt="@p.Title" class="w-full h-44 object-cover rounded" />
+                    <h2 class="mt-3 font-semibold line-clamp-2">@p.Title</h2>
+                    <div class="mt-1 flex items-center gap-2">
+                        <span class="text-lg font-bold">$@p.Price</span>
+                        @if (p.DiscountPercentage > 0)
+                        {
+                            <span class="text-xs text-green-700 bg-green-100 px-2 py-0.5 rounded">
+                                -@p.DiscountPercentage%
+                            </span>
+                        }
+                    </div>
+                    <div class="mt-1 text-sm text-gray-600">Brand: @p.Brand</div>
+                    <div class="mt-4">
+                        <a href="#" class="text-indigo-600 font-semibold hover:underline">View Details</a>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    <!-- Pagination -->
+    @if (Model.TotalPages > 1)
+    {
+        <nav class="mt-8 flex justify-center items-center gap-2">
+            @{
+                var prevDisabled = Model.Page <= 1 ? "pointer-events-none opacity-50" : "";
+                var nextDisabled = Model.Page >= Model.TotalPages ? "pointer-events-none opacity-50" : "";
+                var qVal = Model.Query ?? "";
+            }
+
+            <a
+               class="px-3 py-2 border rounded @prevDisabled"
+               asp-action="Index"
+               asp-route-q="@qVal"
+               asp-route-page="@(Model.Page - 1)"
+               asp-route-pageSize="@Model.PageSize">
+               Prev
+            </a>
+
+            <span class="px-3 py-2 text-sm">
+                Page @Model.Page of @Model.TotalPages
+            </span>
+
+            <a
+               class="px-3 py-2 border rounded @nextDisabled"
+               asp-action="Index"
+               asp-route-q="@qVal"
+               asp-route-page="@(Model.Page + 1)"
+               asp-route-pageSize="@Model.PageSize">
+               Next
+            </a>
+        </nav>
+    }
+</div>

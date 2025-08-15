@@ -3,27 +3,35 @@
 }
 
 <!-- Hero Section -->
-<div class="bg-gradient-to-r from-indigo-600 to-purple-600 py-16">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
-        
-        <!-- Text Content -->
-        <div class="text-center md:text-left flex-1">
-            <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight">
-                Home of Affordable <br> Quality Goods
-            </h1>
-            <p class="mt-4 text-lg text-indigo-100 max-w-lg">
-                Shop the best deals on high-quality products at unbeatable prices.
-                Your dream store is just one click away.
-            </p>
-            <button class="mt-8 bg-white text-indigo-700 font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-indigo-100 transition">
-                <a href="#">Get Started</a>
-            </button>
-        </div>
+<div class="relative overflow-hidden pt-28">
+    <div class="md:px-14">
+        <div class="mx-auto max-w-6xl hover:scale-101 transition duration-300 ease-in-out">
 
-        <!-- Image -->
-        <div class="flex-1 flex justify-center">
-            <img src="~/images/image.png" alt="Home Image" class="w-full max-w-md rounded-lg shadow-lg">
-        </div>
+            <!-- Combined Card -->
+            <div
+                class="flex flex-col md:flex-row items-center border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden shadow-lg">
 
+                <!-- Text Content -->
+                <div class="flex-1 p-6 md:p-10 dark:bg-gray-900 min-h-[300px] md:min-h-[350px] flex flex-col justify-center">
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white leading-snug">
+                        Home of Affordable <br> Quality Goods
+                    </h1>
+                    <p class="mt-4 text-base md:text-lg text-gray-700 dark:text-gray-300">
+                        Shop the best deals on high-quality products at unbeatable prices.
+                        Your dream store is just one click away.
+                    </p>
+                    <a href="#"
+                        class="inline-block mt-6 bg-indigo-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-indigo-700 hover:scale-105 transform transition duration-300">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Image Content -->
+                <div class="flex-1 min-h-[300px] md:min-h-[350px]">
+                    <img src="~/images/port.png" alt="Product Display" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
